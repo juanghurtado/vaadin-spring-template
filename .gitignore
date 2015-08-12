@@ -13,6 +13,9 @@ local.properties
 .settings/
 .loadpath
 
+# SASS cache
+**/*.scss.cache
+
 # logs
 logs/
 
