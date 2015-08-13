@@ -1,3 +1,3 @@
 * [ ] DTO example
-* [ ] Docs system
+* [X] Docs system
 * [X] Vaadin navigation system
