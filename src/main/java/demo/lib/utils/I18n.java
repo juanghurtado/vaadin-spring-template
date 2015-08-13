@@ -3,12 +3,15 @@ package demo.lib.utils;
 import java.util.Locale;
 
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-@Component
-public class i18n {
+import com.vaadin.spring.annotation.SpringComponent;
+
+@SpringComponent
+@Scope("prototype")
+public class I18n {
 
     private Locale locale;
     private MessageSource messageSource;

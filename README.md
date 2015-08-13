@@ -47,7 +47,7 @@ Log files are written in the folder configured in the `logging.path` Spring conf
 
 ## i18n
 
-Properties files for i18n are located in `src/main/resources/i18n/`. To get a localized string, use the `i18n` class, found in `src/main/java/demo/lib/utils/i18n.java`. For example:
+Properties files for i18n are located in `src/main/resources/i18n/`. To get a localized string, use the `I18n` class, found in `src/main/java/demo/lib/utils/I18n.java`. For example:
 
 ```java
 i18n.get("SAMPLE_KEY"); // Returns the localized string for the given key for current locale
@@ -57,12 +57,3 @@ i18n.setLocale(new Locale("fr")); // You can set the locale for future calls to 
 i18n.get("SAMPLE_KEY"); // Returns the French string for the given key
  
 ```
-
-## Navigation
-
-To navigate between views using a "traditional" URL state management, the project uses a navigation system which follows some rules:
-
-- All views which can be accessed through a URL must be defined in the `Route` enum (found in `src/main/java/demo/app/navigation/Route.java`. Each one of them defines a `path` (a URL path) and a `viewClass` (the view to be shown when navigating to the path)
-- The view with an empty `path` will be the default view
-- To navigate to other navigable views, use the `navigateTo()` method of the `Navigator` instance (found in `AppUI.getCurrentApp().getNavigator()`)
-- Views in the navigation system must extend `NavigableView`. To create non-navigable views, use `BaseView` (both found in `src/main/demo/lib/ui/`).

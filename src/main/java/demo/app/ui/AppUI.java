@@ -1,18 +1,14 @@
 package demo.app.ui;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.UI;
-
-import demo.app.navigation.Route;
-import demo.lib.navigator.Navigator;
 
 @Theme("sample-theme")
 @SpringUI
@@ -22,6 +18,9 @@ public class AppUI extends UI {
 
     @Autowired
     private SpringViewProvider viewProvider;
+
+    @Autowired
+    private ApplicationContext appContext;
 
     // Overrides
     // ------------------------------------------------------------------------
@@ -41,14 +40,20 @@ public class AppUI extends UI {
         return (AppUI) UI.getCurrent();
     }
 
+    /**
+     * Returns current application context
+     *
+     * @return the application context
+     */
+    public final ApplicationContext getAppContext() {
+        return appContext;
+    }
+
     // Private utils
     // ------------------------------------------------------------------------
     private void setupNavigator() {
-        new Navigator(this, this, viewProvider, getNavigatorPaths());
-    }
-
-    private List<Route> getNavigatorPaths() {
-        return Arrays.asList(Route.values());
+        Navigator navigator = new Navigator(this, this);
+        navigator.addProvider(viewProvider);
     }
 
 }

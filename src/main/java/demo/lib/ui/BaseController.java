@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import demo.lib.utils.i18n;
+import demo.lib.utils.I18n;
 
 public abstract class BaseController<T extends BaseView> implements Serializable {
 
@@ -13,7 +13,7 @@ public abstract class BaseController<T extends BaseView> implements Serializable
     private T view;
 
     @Autowired
-    private i18n i18n;
+    private I18n i18n;
 
     // Constructor
     // ------------------------------------------------------------------------
