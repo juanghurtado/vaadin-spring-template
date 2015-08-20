@@ -1,15 +1,16 @@
-package demo.app.ui.home;
+package demo.app.ui.navigation.home;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 
 import com.vaadin.spring.annotation.SpringComponent;
 
-import demo.app.model.SampleDTO;
 import demo.app.service.SampleService;
-import demo.lib.ui.BaseController;
+import demo.lib.ui.controller.BaseController;
 import demo.lib.utils.Log;
 
 @SpringComponent
+@Scope("prototype")
 public class HomeController extends BaseController {
 
     @Autowired
@@ -17,18 +18,17 @@ public class HomeController extends BaseController {
 
     // Public API
     // ------------------------------------------------------------------------
-    public void getJuan() {
-        sampleService.save(new SampleDTO("Juan"));
-        sampleService.save(new SampleDTO("José"));
-        sampleService.save(new SampleDTO("Pepe"));
-        sampleService.save(new SampleDTO("Antonio"));
-        sampleService.save(new SampleDTO("Tino"));
-
+    public String getJuan() {
         try {
-            Log.info(getClass(), sampleService.findByName("Juan").get(0).getName());
+            String juan = sampleService.findByName("Juan").get(0).getName();
+            Log.info(getClass(), juan);
+
+            return juan;
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return "";
     }
 
 }

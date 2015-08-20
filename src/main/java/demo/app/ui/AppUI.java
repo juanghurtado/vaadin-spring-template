@@ -10,6 +10,9 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.UI;
 
+import demo.app.model.SampleDTO;
+import demo.app.service.SampleService;
+
 @Theme("sample-theme")
 @SpringUI
 public class AppUI extends UI {
@@ -22,11 +25,20 @@ public class AppUI extends UI {
     @Autowired
     private ApplicationContext appContext;
 
+    @Autowired
+    private SampleService sampleService;
+
     // Overrides
     // ------------------------------------------------------------------------
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         setupNavigator();
+
+        sampleService.save(new SampleDTO("Juan"));
+        sampleService.save(new SampleDTO("José"));
+        sampleService.save(new SampleDTO("Pepe"));
+        sampleService.save(new SampleDTO("Antonio"));
+        sampleService.save(new SampleDTO("Tino"));
     }
 
     // Public API

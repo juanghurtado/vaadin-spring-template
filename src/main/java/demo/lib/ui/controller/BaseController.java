@@ -1,4 +1,4 @@
-package demo.lib.ui;
+package demo.lib.ui.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
