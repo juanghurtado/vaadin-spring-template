@@ -8,6 +8,7 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Label;
 
+import demo.app.constants.ViewActions;
 import demo.app.ui.components.sample.SampleComponentView;
 import demo.lib.ui.view.NavigableView;
 
@@ -32,6 +33,8 @@ public class HomeView extends NavigableView {
 
     @Override
     public void setupViewUI() {
+        sampleViewComponent.sendAction(ViewActions.SAMPLE_ACTION, this, new Object());
+
         this.addComponent(new Label(i18n("HOME_VIEW") + " - " + controller.getJuan()));
         this.addComponent(sampleViewComponent);
 
